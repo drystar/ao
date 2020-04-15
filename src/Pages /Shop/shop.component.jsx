@@ -4,7 +4,7 @@ import CollectionPreview from "../../Components /Collection-preview/Collection-p
 
 import SHOP_DATA from "./shop.data";
 
-class ShopPage extends React.Conponent {
+class ShopPage extends React.Component {
   constructor(props) {
     super(props);
 
@@ -14,6 +14,14 @@ class ShopPage extends React.Conponent {
   }
 
   render() {
+    const { collections } = this.state;
+    return (
+      <div className="shop-page">
+        {collections.map(({ id, ...otherCollectionsProps }) => (
+          <CollectionPreview key={id} {...otherCollectionsProps} />
+        ))}
+      </div>
+    );
     return <div>SHOP PAGE</div>;
   }
 }
