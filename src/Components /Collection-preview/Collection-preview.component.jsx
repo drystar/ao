@@ -2,8 +2,8 @@ import React from "react";
 
 import "./Collection-preview.styles.scss";
 
-const CollectionPreview = ({ title, items }) => {
-  <div className="collection-preview">
+const CollectionPreview = ({ title, items }) => (
+  <div className="Collection-preview">
     <h1 className="title">{title.toUpperCase()}</h1>
     <div className="preview">
       {items.map((item) => (
@@ -12,7 +12,7 @@ const CollectionPreview = ({ title, items }) => {
         </div>
       ))}
     </div>
-  </div>;
-};
+  </div>
+);
 
 export default CollectionPreview;
