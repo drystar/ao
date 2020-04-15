@@ -4,19 +4,14 @@ import { Switch, Route } from "react-router-dom";
 import "./App.css";
 
 import HomePage from "./Pages /Homepage/homepage.component";
-
-const AO = () => (
-  <div>
-    <h1>HELLO A0</h1>
-  </div>
-);
+import ShopPage from "./Pages /Shop/shop.component";
 
 function App() {
   return (
     <div>
       <switch>
         <Route exact path="/" component={HomePage} />
-        <Route path="/ao" component={AO} />
+        <Route path="/shop" component={ShopPage} />
       </switch>
     </div>
   );
