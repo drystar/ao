@@ -1,11 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import { auth } from "../../Firebase/firebase.utils";
+
 import { ReactComponent as Logo } from "../../assets/ao.svg";
 
 import "./Header.styles.scss";
 
-const Header = () => (
+const Header = ({ currentUser }) => (
   <div className="header">
     <Link className="logo-container" to="/">
       <Logo className="logo" />
