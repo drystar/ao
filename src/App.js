@@ -28,7 +28,7 @@ class App extends React.Component {
     });
   }
 
-  componentDidMount() {
+  componentWillUnmount() {
     this.unsubscribeFromAuth();
   }
 
