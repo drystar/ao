@@ -19,9 +19,26 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
 
   const userRef = firestore.doc(`users/${userAuth.uid}`);
 
+  //snapshot represents the data => Document Ref objects to perform CRUD methods
+
   const snapShot = await userRef.get();
 
-  console.log(snapShot);
+  if (!snapShot.exists) {
+    const { displayName, email } = userAuth;
+    const createdAt = new Date();
+
+    try {
+      await userRef.set({
+        displayName,
+        email,
+        createdAt,
+        ...additionalData,
+      });
+    } catch (error) {
+      console.log("error crating user", error.message);
+    }
+  }
+  return userRef;
 };
 
 firebase.initializeApp(config);
