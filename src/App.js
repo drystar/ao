@@ -26,18 +26,24 @@ class App extends React.Component {
         // check if db has updated at ref with any new data
         const userRef = await createUserProfileDocument(userAuth);
 
-        // will return snapshot of curent data in db | will contain any new use data
+        // will return snapshot of current state data in db | will contain any new use data
         userRef.onSnapshot((snapShot) => {
-          this.setState({
-            currentUser: {
-              id: snapShot.id,
-              ...snapShot.data(),
+          this.setState(
+            {
+              currentUser: {
+                id: snapShot.id,
+                ...snapShot.data(),
+              },
             },
-          });
+            () => {
+              console.log(this.state);
+            }
+          );
         });
       }
 
-      createUserProfileDocument(user);
+      // return state to null | log out
+      this.setState({ currentUser: userAuth });
     });
   }
 
