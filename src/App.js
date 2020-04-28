@@ -28,17 +28,12 @@ class App extends React.Component {
 
         // will return snapshot of current state data in db | will contain any new use data
         userRef.onSnapshot((snapShot) => {
-          this.setState(
-            {
-              currentUser: {
-                id: snapShot.id,
-                ...snapShot.data(),
-              },
+          this.setState({
+            currentUser: {
+              id: snapShot.id,
+              ...snapShot.data(),
             },
-            () => {
-              console.log(this.state);
-            }
-          );
+          });
         });
       }
 
