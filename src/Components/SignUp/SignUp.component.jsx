@@ -15,7 +15,7 @@ class SignUp extends React.Component {
       displayName: "",
       email: "",
       password: "",
-      confirmPassword: "",
+      confirmPassword: ""
     };
   }
 
@@ -28,6 +28,26 @@ class SignUp extends React.Component {
       alert("Passwords Don't Match");
       return;
     }
+
+        // inside try => use a new off method that comes with auth library
+        try {
+          const { user } await auth.createUserWithEmailAndPassword(
+            email,
+            password
+          )
+
+          await createProfileDocument(user, { displayName })
+
+          this.setState({ 
+            displayName: "",
+            email: "",
+            password: "",
+            confirmPassword: ""
+          })
+
+        } catch (error) {
+          console.error(error)
+        }
   };
 
   render() {
