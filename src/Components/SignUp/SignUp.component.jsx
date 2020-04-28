@@ -3,7 +3,7 @@ import React from "react";
 import FormInput from "../Form-input/Form-input.component";
 import CustomButton from "../Custom-button/Custom-button.component";
 
-import { auth, createProfileDocument } from "../../Firebase/firebase.utils";
+import { auth, createUserProfileDocument } from "../../Firebase/firebase.utils";
 
 import "./SignUp.styles.scss";
 
@@ -15,7 +15,7 @@ class SignUp extends React.Component {
       displayName: "",
       email: "",
       password: "",
-      confirmPassword: ""
+      confirmPassword: "",
     };
   }
 
@@ -29,33 +29,31 @@ class SignUp extends React.Component {
       return;
     }
 
-        // inside try => use a new off method that comes with auth library
-        try {
-          const { user } await auth.createUserWithEmailAndPassword(
-            email,
-            password
-          )
+    // inside try => use a new off method that comes with auth library
+    try {
+      const { user } = await auth.createUserWithEmailAndPassword(
+        email,
+        password
+      );
 
-          await createProfileDocument(user, { displayName })
+      await createUserProfileDocument(user, { displayName });
 
-          this.setState({ 
-            displayName: "",
-            email: "",
-            password: "",
-            confirmPassword: ""
-          })
-
-        } catch (error) {
-          console.error(error)
-        }
+      this.setState({
+        displayName: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
+      });
+    } catch (error) {
+      console.error(error);
+    }
   };
 
-  handleChange = event => {
-    const { name, value } = event.target
+  handleChange = (event) => {
+    const { name, value } = event.target;
 
-    this.setState({ [name]: value })
-  }
-
+    this.setState({ [name]: value });
+  };
 
   render() {
     const { displayName, email, password, confirmPassword } = this.state;
