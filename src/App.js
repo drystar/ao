@@ -1,5 +1,6 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
+import { connect } from "react-redux";
 
 import "./App.css";
 
@@ -8,6 +9,8 @@ import ShopPage from "./Pages/Shop/shop.component";
 import Header from "./Components/Header/Header.component";
 import SignInAndSignUp from "./Pages/Sign-in-and-sign-up/Sign-in-and-sign-up.component";
 import { auth, createUserProfileDocument } from "./Firebase/firebase.utils";
+
+import { setCurrentUser } from "./redux/user/user.actions";
 
 class App extends React.Component {
   constructor() {
@@ -60,4 +63,8 @@ class App extends React.Component {
   }
 }
 
-export default App;
+const mapDispatchToProps = (dispatch) => ({
+  setCurrentUser: (user) => dispatch(setCurrentUser(user)),
+});
+
+export default connect(null, mapDispatchToProps)(App);
