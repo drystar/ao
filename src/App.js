@@ -13,14 +13,6 @@ import { auth, createUserProfileDocument } from "./Firebase/firebase.utils";
 import { setCurrentUser } from "./redux/user/user.actions";
 
 class App extends React.Component {
-  constructor() {
-    super();
-
-    this.state = {
-      currentUser: null,
-    };
-  }
-
   unsubscribeFromAuth = null;
 
   componentDidMount() {
@@ -31,17 +23,15 @@ class App extends React.Component {
 
         // will return snapshot of current state data in db | will contain any new use data
         userRef.onSnapshot((snapShot) => {
-          this.setState({
-            currentUser: {
-              id: snapShot.id,
-              ...snapShot.data(),
-            },
+          this.props.setCurrentUser({
+            id: snapShot.id,
+            ...snapShot.data(),
           });
         });
       }
 
       // return state to null | log out
-      this.setState({ currentUser: userAuth });
+      this.props.setCurrentUser({ userAuth });
     });
   }
 
