@@ -16,6 +16,8 @@ class App extends React.Component {
   unsubscribeFromAuth = null;
 
   componentDidMount() {
+    const { setCurrentUser } = this.props;
+
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
       if (userAuth) {
         // check if db has updated at ref with any new data
@@ -23,7 +25,7 @@ class App extends React.Component {
 
         // will return snapshot of current state data in db | will contain any new use data
         userRef.onSnapshot((snapShot) => {
-          this.props.setCurrentUser({
+          setCurrentUser({
             id: snapShot.id,
             ...snapShot.data(),
           });
@@ -31,7 +33,7 @@ class App extends React.Component {
       }
 
       // return state to null | log out
-      this.props.setCurrentUser({ userAuth });
+      setCurrentUser(userAuth);
     });
   }
 
