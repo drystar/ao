@@ -8,4 +8,4 @@ const ShopPage = ({ collections }) => (
   </div>
 );
 
-export default connect(mapStateToProps)(ShopPage);
+export default ShopPage;
