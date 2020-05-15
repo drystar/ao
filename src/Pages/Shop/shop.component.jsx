@@ -7,6 +7,7 @@ import CategoryPage from "../Category/Category.component";
 const ShopPage = ({ match }) => (
   <div className="shop-page">
     <Route exact path={`${match.path}`} component={CollectionOverview} />
+    <Route path={`${match.path}/:catgeoryId`} component={CategoryPage} />
   </div>
 );
 
