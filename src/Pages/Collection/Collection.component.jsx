@@ -1,10 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import {
-  selectCollection,
-  selectCollections,
-} from "./../../redux/shop/shop.selectors";
+import { selectCollection } from "./../../redux/shop/shop.selectors";
 
 import CollectionItem from "../../Components/Collection-item/Collection-item.component";
 
