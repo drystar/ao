@@ -22,3 +22,5 @@ export const selectCollection = (collectionUrlParam) =>
       (collection) => collection.id === COLLECTION_ID_MAP[collectionUrlParam]
     )
   );
+
+// curried function: create selector returns another function
