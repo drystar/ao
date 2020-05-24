@@ -1,5 +1,27 @@
 import styled, { css } from "styled-components";
 
+const invertedButtonStyles = css`
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+
+  &:hover {
+    background-color: black;
+    color: white;
+    border: none;
+  }
+`;
+
+const googleSignInStyles = css`
+  background-color: #4285f4;
+  color: white;
+
+  &:hover {
+    background-color: #357ae8;
+    border: none;
+  }
+`;
+
 export const CustomButtonContainer = styled.button`
   min-width: 165px;
   width: auto;
