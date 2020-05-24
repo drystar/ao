@@ -4,7 +4,7 @@ import { CustomButtonContainer } from "./Custom-button.styles";
 
 import "./Custom-button.styles.scss";
 
-const CustomButton = ({ children, ...props) => (
+const CustomButton = ({ children, ...props }) => (
   <CustomButtonContainer {...props}>{children}</CustomButtonContainer>
 );
 
