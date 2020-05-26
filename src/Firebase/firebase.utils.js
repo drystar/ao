@@ -18,7 +18,6 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
   if (!userAuth) return;
 
   const userRef = firestore.doc(`users/${userAuth.uid}`);
-
   //snapshot represents the data => Document Ref objects to perform CRUD methods
 
   const snapShot = await userRef.get();
@@ -42,6 +41,11 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
 };
 
 firebase.initializeApp(config);
+
+export const addCollectionAndDocuments = (collectionKey, objectToAdd) => {
+  const collectionRef = firestore.collection(collectionKey);
+  console.log(collectionRef);
+};
 
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
