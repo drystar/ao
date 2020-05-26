@@ -42,7 +42,10 @@ class App extends React.Component {
 
       // return state to null | log out
       setCurrentUser(userAuth);
-      addCollectionAndDocuments("collections", collectionsArray);
+      addCollectionAndDocuments(
+        "collections",
+        collectionsArray.map(({ title, items }) => ({ title, items }))
+      );
     });
   }
 
