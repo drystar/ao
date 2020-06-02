@@ -1,5 +1,6 @@
 import React from "react";
 import { Route } from "react-router-dom";
+import { connect } from "react-redux";
 
 import CollectionOverview from "../../Components/Collections-overview/Collections-overview.component";
 import CollectionPage from "../Collection/Collection.component";
@@ -36,5 +37,10 @@ class ShopPage extends React.Component {
     );
   }
 }
+
+const mapDispatchToProps = (dispatch) => ({
+  updateCollections: (collectionsMap) =>
+    dispatch(updateCollections(collectionsMap)),
+});
 
 export default ShopPage;
