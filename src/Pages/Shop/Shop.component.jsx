@@ -7,12 +7,18 @@ import CollectionPage from "../Collection/Collection.component";
 
 import { updateCollections } from "../../redux/shop/shop.actions";
 
+import WithSpinner from "../../Components/With-spinner/With-spinner.component";
+
 import {
   firestore,
   convertCollectionsSnapshotToMap,
 } from "../../Firebase/firebase.utils";
 
 class ShopPage extends React.Component {
+  state = {
+    loading: true,
+  };
+
   unsubscribeFromSnapshot = null;
 
   componentDidMount() {
@@ -22,7 +28,8 @@ class ShopPage extends React.Component {
     this.unsubscribeFromSnapshot = collectionRef.onSnapshot(
       async (snapshot) => {
         const collectionsMap = convertCollectionsSnapshotToMap(snapshot);
-        collectionsMap(collectionsMap);
+        updateCollections(collectionsMap);
+        this.setState({ loading: false });
       }
     );
   }
