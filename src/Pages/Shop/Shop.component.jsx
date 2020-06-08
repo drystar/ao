@@ -5,34 +5,18 @@ import { connect } from "react-redux";
 import CollectionOverview from "../../Components/Collections-overview/Collections-overview.component";
 import CollectionPage from "../Collection/Collection.component";
 
-import { updateCollections } from "../../redux/shop/shop.actions";
+import { fetchCollectionsStartAsync } from "../../redux/shop/shop.actions";
 
 import WithSpinner from "../../Components/With-spinner/With-spinner.component";
-
-import {
-  firestore,
-  convertCollectionsSnapshotToMap,
-} from "../../Firebase/firebase.utils";
 
 const CollectionsOverviewWithSpinner = WithSpinner(CollectionOverview);
 const CollectionPageWithSpinner = WithSpinner(CollectionPage);
 
 class ShopPage extends React.Component {
-  state = {
-    loading: true,
-  };
-
-  unsubscribeFromSnapshot = null;
-
-  componentDidMount() {
-    const { updateCollections } = this.props;
-    
-    });
-  }
+  componentDidMount() {}
 
   render() {
     const { match } = this.props;
-    const { loading } = this.state;
     return (
       <div className="shop-page">
         <Route
