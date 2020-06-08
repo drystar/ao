@@ -1,6 +1,23 @@
 import ShopActionTypes from "./shop.types";
 
-export const updateCollections = (collectionsMap) => ({
-  type: ShopActionTypes.UPDATE_COLLECTIONS,
-  payload: collectionsMap,
+import {
+  firestore,
+  convertCollectionsSnapshotToMap,
+} from "../../Firebase/firebase.utils";
+
+export const fetchCollectionsStart = () => ({
+  type: ShopActionTypes.FETCH_COLLECTIONS_START,
 });
+
+export const fetchCollectionsStartAsync = () => {
+  return (dispatch) => {
+    const collectionRef = firestore.collection("collections");
+    dispatch(fetchCollectionsStart());
+
+    collectionRef.get().then((snapshot) => {
+      const collectionsMap = convertCollectionsSnapshotToMap(snapshot);
+      // updateCollections(collectionsMap);
+      this.setState({ loading: false });
+    });
+  };
+};
