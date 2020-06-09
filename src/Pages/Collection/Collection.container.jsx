@@ -7,7 +7,7 @@ import WithSpinner from "../../Components/With-spinner/With-spinner.component";
 import CollectionPage from "./Collection.component";
 
 const mapStateToProps = createStructuredSelector({
-  isLoading: (state) => selectIsCollectionsLoaded(state),
+  isLoading: (state) => !selectIsCollectionsLoaded(state),
 });
 
 const CollectionPageContainer = compose(
