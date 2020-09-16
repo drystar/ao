@@ -24,7 +24,7 @@ export function* signInWithGoogle() {
   }
 }
 
-export function* onGoogleSignIn() {
+export function* onGoogleSignInStart() {
   yield takeLatest(userActionTypes.GOOGLE_SIGN_IN_START, signInWithGoogle);
 }
 

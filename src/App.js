@@ -37,7 +37,7 @@ class App extends React.Component {
 
     //   // return state to null | log out
     //   setCurrentUser(userAuth);
-    });
+    // });
   }
 
   componentWillUnmount() {
