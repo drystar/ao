@@ -17,7 +17,7 @@ export function* signInWithGoogle() {
     console.log(userRef);
     const userSnapShot = yield userRef.get();
     yield put(
-      googleSignInFailure({ id: userSnapShot.id, ...userSnapShot.data() })
+      googleSignInSuccess({ id: userSnapShot.id, ...userSnapShot.data() })
     );
   } catch (error) {
     yield put(googleSignInFailure(error));
