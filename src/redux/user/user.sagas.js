@@ -33,8 +33,8 @@ export function* onGoogleSignInStart() {
   yield takeLatest(userActionTypes.GOOGLE_SIGN_IN_START, signInWithGoogle);
 }
 
-export function* signInWitEmail() {
-  try {
+export function* signInWitEmail({payload: { email, password }})
+ try {
     const { user } = yield auth.signInWithEmailAndPassword(email, password);
     const userRef = yield call(createUserProfileDocument, user);
     const userSnapShot = yield userRef.get();
@@ -44,12 +44,11 @@ export function* signInWitEmail() {
   } catch (error) {
     yield put(emailSignInFailure(error));
   }
-}
 
-export function* emailSignInStart() {
+export function* OnEmailSignInStart() {
   yield takeLatest(userActionTypes.EMAIL_SIGN_IN_START, signInWitEmail);
 }
 
 export function* userSagas() {
-  yield all([call(onGoogleSignInStart)]);
+  yield all([call(onGoogleSignInStart), call(onEmailSiginInStart)]);
 }
