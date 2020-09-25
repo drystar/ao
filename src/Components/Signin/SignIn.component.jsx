@@ -7,7 +7,6 @@ import CustomButton from "../Custom-button/Custom-button.component";
 import {
   googleSignInStart,
   emailSignInStart,
-  emailSignInStart,
 } from "../../redux/user/user.actions";
 
 import "./SignIn.styles.scss";
@@ -28,7 +27,7 @@ class SignIn extends React.Component {
     const { email, password } = this.state;
     const { emailSignInStart } = this.props;
 
-    emailSignInStart(email, passowrd);
+    emailSignInStart(email, password);
   };
 
   handleChange = (event) => {

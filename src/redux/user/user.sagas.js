@@ -43,10 +43,10 @@ export function* signInWitEmail({ payload: { email, password } }) {
   }
 }
 
-export function* OnEmailSignInStart() {
+export function* onEmailSignInStart() {
   yield takeLatest(userActionTypes.EMAIL_SIGN_IN_START, signInWitEmail);
 }
 
 export function* userSagas() {
-  yield all([call(onGoogleSignInStart), call(onEmailSiginInStart)]);
+  yield all([call(onGoogleSignInStart), call(onEmailSignInStart)]);
 }
