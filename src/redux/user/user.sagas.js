@@ -51,7 +51,7 @@ export function* onEmailSignInStart() {
 export function* isUserAuthenticated() {
   try {
     const userAuth = yield getCurrentUser();
-    if (!user) return;
+    if (!userAuth) return;
     yield getSnapshotFromUserAuth(userAuth);
   } catch (error) {
     yield put(signInFailure(error));
