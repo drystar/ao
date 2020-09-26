@@ -100,7 +100,7 @@ export function* signInAfterSignUp({ payload: { user, additionalData } }) {
 }
 
 export function* onSignUpStart() {
-  yield takeLatest(userActionTypes.SIGN_UP_START, SignUp);
+  yield takeLatest(userActionTypes.SIGN_UP_START, signUp);
 }
 
 export function* onSignUpSuccess() {
