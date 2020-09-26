@@ -1,4 +1,4 @@
-import { takeLatest, call, put } from "redux-saga/effects";
+import { takeLatest, call, put, all } from "redux-saga/effects";
 
 import {
   firestore,
@@ -37,3 +37,7 @@ export function* fetchCollectionsStart() {
 
 //  more yield = easier to test
 // put is the saga effect for creating actions similar to dispatch
+
+export function* shopSagas() {
+  yield all([call(fetchCollectionsStart)]);
+}
