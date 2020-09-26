@@ -37,3 +37,15 @@ export const signOutFailure = (error) => ({
   type: userActionTypes.SIGN_OUT_FAILURE,
   payload: error,
 });
+
+export const signUpStart = () => ({
+  type: userActionTypes.SIGN_UP_START,
+});
+
+export const signUpSuccess = () => ({
+  type: userActionTypes.SIGN_UP_SUCCESS,
+});
+
+export const signUpFailure = () => ({
+  type: userActionTypes.SIGN_UP_FAILURE,
+});
