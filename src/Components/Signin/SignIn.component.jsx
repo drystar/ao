@@ -12,6 +12,7 @@ import {
 import "./SignIn.styles.scss";
 
 const SignIn = () => { 
+  const [userCredentials, setCredentials] = useState({ email: '', password: ''})
  
  const handleSubmit = async (event) => {
     event.preventDefault();
