@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 
 import FormInput from "../Form-input/Form-input.component";
@@ -11,17 +11,9 @@ import {
 
 import "./SignIn.styles.scss";
 
-class SignIn extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      email: "",
-      password: "",
-    };
-  }
-
-  handleSubmit = async (event) => {
+const SignIn = () => { 
+ 
+ const handleSubmit = async (event) => {
     event.preventDefault();
 
     const { email, password } = this.state;
@@ -30,7 +22,7 @@ class SignIn extends React.Component {
     emailSignInStart(email, password);
   };
 
-  handleChange = (event) => {
+  const handleChange = (event) => {
     const { value, name } = event.target;
 
     this.setState({ [name]: value });
