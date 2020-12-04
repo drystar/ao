@@ -28,7 +28,6 @@ const SignIn = ({emailSignInStart, googleSignInStart}) => {
     setCredentials({ ...userCredentials, [name]: value });
   };
 
-  const  {}
     return (
       <div className="sign-in">
         <h2>I already have an account</h2>
