@@ -11,14 +11,13 @@ import {
 
 import "./SignIn.styles.scss";
 
-const SignIn = () => { 
+const SignIn = ({emailSignInStart, googleSignInStart}) => { 
   const [userCredentials, setCredentials] = useState({ email: '', password: ''})
  
  const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const { email, password } = this.state;
-    const { emailSignInStart } = this.props;
+    const { email, password } = userCredentials;
 
     emailSignInStart(email, password);
   };
@@ -26,21 +25,19 @@ const SignIn = () => {
   const handleChange = (event) => {
     const { value, name } = event.target;
 
-    this.setState({ [name]: value });
+    setCredentials({ ...userCredentials, [name]: value });
   };
 
-  render() {
-    const { googleSignInStart } = this.props;
     return (
       <div className="sign-in">
         <h2>I already have an account</h2>
         <span>Sign in with your email and password</span>
 
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={handleSubmit}>
           <FormInput
             name="email"
             type="email"
-            handleChange={this.handleChange}
+            handleChange={handleChange}
             value={this.state.email}
             label="email"
             required
@@ -49,7 +46,7 @@ const SignIn = () => {
             name="password"
             type="password"
             value={this.state.password}
-            handleChange={this.handleChange}
+            handleChange={handleChange}
             label="password"
             required
           />
@@ -67,7 +64,6 @@ const SignIn = () => {
       </div>
     );
   }
-}
 
 const mapDispatchToProps = (dispatch) => ({
   googleSignInStart: () => dispatch(googleSignInStart()),
