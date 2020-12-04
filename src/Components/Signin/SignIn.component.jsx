@@ -14,10 +14,10 @@ import "./SignIn.styles.scss";
 const SignIn = ({emailSignInStart, googleSignInStart}) => { 
   const [userCredentials, setCredentials] = useState({ email: '', password: ''})
  
+  const { email, password } = userCredentials;
+
  const handleSubmit = async (event) => {
     event.preventDefault();
-
-    const { email, password } = userCredentials;
 
     emailSignInStart(email, password);
   };
@@ -28,6 +28,7 @@ const SignIn = ({emailSignInStart, googleSignInStart}) => {
     setCredentials({ ...userCredentials, [name]: value });
   };
 
+  const  {}
     return (
       <div className="sign-in">
         <h2>I already have an account</h2>
@@ -38,14 +39,14 @@ const SignIn = ({emailSignInStart, googleSignInStart}) => {
             name="email"
             type="email"
             handleChange={handleChange}
-            value={this.state.email}
+            value={email}
             label="email"
             required
           />
           <FormInput
             name="password"
             type="password"
-            value={this.state.password}
+            value={password}
             handleChange={handleChange}
             label="password"
             required
