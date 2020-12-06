@@ -5,6 +5,8 @@ const path = require("path");
 
 if (process.env.NODE_ENV !== "production") require("dotenv").config();
 
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+
 const app = express();
 const port = process.env.PORT || 8000;
 
@@ -24,4 +26,12 @@ app.get("*", function (req, res) {
 app.listen(port, (error) => {
   if (error) throw error;
   console.log("Server running on port" + port);
+});
+
+app.post("/payment", (req, res) => {
+  const body = {
+    source: req.body.token.id,
+    amount: req.body.amount,
+    currency: "CAD",
+  };
 });
