@@ -1,6 +1,7 @@
 import React from "react";
 import StripeCheckout from "react-stripe-checkout";
 import axios from "axios"
+import { response } from "express";
 
 const StripeCheckoutButton = ({ price }) => {
   const priceForStripe = price * 100;
@@ -16,9 +17,14 @@ const StripeCheckoutButton = ({ price }) => {
         amount: priceForStripe,
         token 
       }
+    }).then(response => {
+      alert('Payment Successful')
+    }).catch(error => {
+      console.log('Payment Error: ', JSON.parse(error))
+      alert('Payment Unsuccessful - Check your Details & Try Again')
     })
     };
-    
+
   return (
     <StripeCheckout
       label="Pay Now"
