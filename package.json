@@ -1,6 +1,10 @@
 {
   "name": "a0-livestyle-server",
   "version": "1.0.0",
+  "engines": {
+    "node": "10.16.1",
+    "npm": "6.13.2"
+  },
   "scripts": {
     "client": "cd client && yarn start",
     "server": "nodemon server.js",
