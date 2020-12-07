@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 
 import { selectCollection } from "./../../redux/shop/shop.selectors";
+import CollectionsContext from '../../contexts/Collections/collections.context'
 
 import CollectionItem from "../../Components/Collection-item/Collection-item.component";
 
@@ -10,6 +11,7 @@ import "./Collection.styles.scss";
 const CollectionPage = ({ collection }) => {
   const { title, items } = collection;
   return (
+    <CollectionsContext.Consumer>
     <div className="collection-page">
       <h2 className="title"> {title} </h2>
       <div className="items">
@@ -18,6 +20,7 @@ const CollectionPage = ({ collection }) => {
         ))}
       </div>
     </div>
+    </CollectionsContext.Consumer>
   );
 };
 
@@ -27,4 +30,4 @@ const mapStateToProps = (state, ownProps) => ({
 
 // selector requires part of state depeneding on the url parmeter
 
-export default connect(mapStateToProps)(CollectionPage);
+export default CollectionPage;
